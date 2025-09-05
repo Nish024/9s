@@ -17,14 +17,17 @@ size = Vector3(1.00004, 1, 1.01247)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7218"]
 size = Vector3(1.00354, 1, 1.00015)
 
-[node name="red_box" type="CharacterBody3D" groups=["hazard"]]
+[node name="red_box" type="Node3D" groups=["hazard", "not_enemy"]]
 script = ExtResource("1_x7218")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_2jc28")
+skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0119106, 0, 0.00772879)
 shape = SubResource("BoxShape3D_q5h0j")
 

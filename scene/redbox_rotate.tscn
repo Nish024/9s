@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxeig5qque02w"]
+
+[ext_resource type="PackedScene" uid="uid://6kqyihe5dve8" path="res://wave_spawners/redbox_WAVE.tscn" id="1_66nkm"]
+
+[sub_resource type="GDScript" id="GDScript_jds5v"]
+script/source = "extends Node3D
+"
+
+[node name="redbox_rotate" instance=ExtResource("1_66nkm")]
+script = SubResource("GDScript_jds5v")

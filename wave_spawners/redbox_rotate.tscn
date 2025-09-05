@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcnnhthba1onx"]
+[gd_scene load_steps=3 format=3 uid="uid://dlcmernjdee6o"]
 
 [ext_resource type="PackedScene" uid="uid://6kqyihe5dve8" path="res://wave_spawners/redbox_WAVE.tscn" id="1_w8v1m"]
 [ext_resource type="Script" uid="uid://c6dobm7t6laxw" path="res://script/redbox_rotate.gd" id="2_w1ivt"]
