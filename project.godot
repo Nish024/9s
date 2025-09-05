@@ -39,7 +39,6 @@ enemy_bullet=""
 hazard=""
 box=""
 Hazard=""
-not_enemy=""
 
 [input]
 

@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 
 @export var damage: int = 10
 @export var cooldown: float = 3.0

@@ -41,23 +41,27 @@ func _spawn_single_enemy() -> void:
 		print("Error: enemy_scene is not set in the inspector!")
 		return
 		
-	var new_node: Node3D = enemy_scene.instantiate()
+	var new_enemy: Node3D = enemy_scene.instantiate()
 	
-	# Add the new node to the scene tree immediately.
-	get_parent().add_child(new_node)
-	new_node.global_position = self.global_position
-	
-	# Only track the node as an "enemy" if it's not in the "not_enemy" group.
-	if new_node.is_in_group("not_enemy"):
-		print("DEBUG: Spawned a non-enemy node. Not tracking.")
-	elif new_node.has_signal("died"):
-		new_node.connect("died", _on_enemy_died)
+	if new_enemy is StaticBody3D:
+		# For a static body, just set the position and add to the scene
+		get_parent().add_child(new_enemy)
+		new_enemy.global_position = self.global_position
+		print("spawned staticbody3d")
+	else:
+		# For other enemy types, connect signals and call 'start()'
+		if new_enemy.has_signal("died"):
+			new_enemy.connect("died", _on_enemy_died)
+		
+		get_parent().add_child(new_enemy)
+		new_enemy.global_position = self.global_position
+
+		if new_enemy.has_method("start"):
+			new_enemy.start(new_enemy)
+
 		enemies_alive += 1
 		print("DEBUG: Spawned new enemy. Enemies alive: ", enemies_alive)
-	else:
-		# For other non-enemies, we just spawn them and don't track them.
-		print("DEBUG: Spawned a non-enemy node without 'died' signal. Not tracking.")
-	
+
 	enemies_left_to_spawn -= 1
 
 # This function is called every time an enemy from this wave is defeated.
@@ -71,3 +75,4 @@ func _on_enemy_died() -> void:
 		
 func is_wave_done() -> bool:
 	return enemies_left_to_spawn <= 0 and enemies_alive <= 0
+	
