@@ -17,7 +17,7 @@ size = Vector3(1.00004, 1, 1.01247)
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7218"]
 size = Vector3(1.00354, 1, 1.00015)
 
-[node name="red_box" type="CharacterBody3D" groups=["hazard"]]
+[node name="red_box" type="StaticBody3D" groups=["hazard"]]
 script = ExtResource("1_x7218")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

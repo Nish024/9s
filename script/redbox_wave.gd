@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends StaticBody3D
 
 @export var damage: int = 10
 @export var cooldown: float = 3.0
