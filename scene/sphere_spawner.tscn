@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bdyxuta5qkmxq"]
+
+[node name="SphereSpawner" type="Node3D"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://pg4cf6hx2bg6"]
+
+[ext_resource type="Script" uid="uid://br8n2ytom5oe0" path="res://script/enemy.gd" id="1_h08p8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpj0a"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vufel"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h08p8"]
+material = SubResource("StandardMaterial3D_vufel")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ypet"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vufel"]
+margin = 0.0
+radius = 0.684189
+
+[node name="Sphereenemy" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 2050
+collision_mask = 1044
+script = ExtResource("1_h08p8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.44545, 0, 0, 0, 2.44545, 0, 0, 0, 2.44545, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_gpj0a")
+mesh = SubResource("SphereMesh_h08p8")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ypet")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_vufel")

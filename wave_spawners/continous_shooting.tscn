@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpm7kc26hssy8"]
+
+[ext_resource type="Script" uid="uid://csc2b7pwpq50y" path="res://script/continous_shooting.gd" id="1_lny7c"]
+
+[node name="Continous_shooting" type="Node3D"]
+script = ExtResource("1_lny7c")

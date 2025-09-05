@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://pyatjjfyd44j"]
+
+[ext_resource type="Script" uid="uid://qnt4a5itihkx" path="res://script/sheild.gd" id="1_lk0wj"]
+[ext_resource type="Shader" uid="uid://bcqxfktthbrd" path="res://script/sheild.gdshader" id="2_8t31g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jp0vr"]
+render_priority = 0
+shader = ExtResource("2_8t31g")
+shader_parameter/stripe_speed = 1.0
+shader_parameter/stripe_count = 10.0
+shader_parameter/shield_color = Color(0.2, 0.8, 1, 1)
+shader_parameter/alpha_strength = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_fnsft"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lk0wj"]
+
+[node name="Sheild" type="Area3D" groups=["shield"]]
+collision_layer = 2056
+collision_mask = 1041
+script = ExtResource("1_lk0wj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["shield"]]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+layers = 65
+material_override = SubResource("ShaderMaterial_jp0vr")
+mesh = SubResource("SphereMesh_fnsft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.7, 0, 0, 0, 3.7, 0, 0, 0, 3.7, 0, 0, 0)
+shape = SubResource("SphereShape3D_lk0wj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

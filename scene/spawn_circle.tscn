@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://rn6x85jutnmh"]
+
+[ext_resource type="ArrayMesh" uid="uid://djg7enykna4j3" path="res://circle.obj" id="1_nw6d6"]
+[ext_resource type="Shader" uid="uid://bfnmnnq8svtha" path="res://script/spawn_circle.tres" id="1_uuw4r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dl8l0"]
+render_priority = 0
+shader = ExtResource("1_uuw4r")
+shader_parameter/Circle_color = Color(1, 0.117868, 0.136837, 1)
+shader_parameter/Opacity = 0.15
+shader_parameter/Speed = Vector2(0, -1)
+
+[node name="spawning_circle" type="Node"]
+
+[node name="Circle" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0208549, -0.00429142, -0.0195558)
+material_override = SubResource("ShaderMaterial_dl8l0")
+mesh = ExtResource("1_nw6d6")

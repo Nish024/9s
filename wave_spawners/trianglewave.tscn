@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy8udm2k8mr4e"]
+
+[ext_resource type="PackedScene" uid="uid://clgo204bnvw3f" path="res://scene/Triangle.tscn" id="1_eti50"]
+[ext_resource type="PackedScene" uid="uid://ckjmsgcxpnfxm" path="res://scene/triangle_bullet.tscn" id="2_muxb7"]
+
+[node name="triangle" instance=ExtResource("1_eti50")]
+
+[node name="triangle_bullet" parent="." index="3" instance=ExtResource("2_muxb7")]
+fire_rate = 0.7

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhx3pt88o7vpt"]
+
+[ext_resource type="Script" uid="uid://ch64wed1jva7y" path="res://script/shoot_four_directions.gd" id="1_ti81r"]
+
+[node name="ShootFourDirections" type="Node3D"]
+script = ExtResource("1_ti81r")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://grsvd5baukne"]
+
+[ext_resource type="Script" uid="uid://d1dqeio5cpmad" path="res://script/laser_spawning.gd" id="1_p4eof"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uawn7"]
+albedo_color = Color(0.995729, 0.0778942, 0, 1)
+emission_enabled = true
+emission = Color(0.801264, 1.54018e-06, 6.73831e-07, 1)
+emission_energy_multiplier = 2.55
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p4eof"]
+height = 25.0
+
+[node name="Laser_spawning" type="Node3D"]
+script = ExtResource("1_p4eof")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_uawn7")
+mesh = SubResource("CylinderMesh_p4eof")

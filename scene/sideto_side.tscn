@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://h77bkjy8v563"]
+
+[ext_resource type="Script" uid="uid://eu3cdg2bkvlh" path="res://script/sideto_side.gd" id="1_w1qc8"]
+
+[node name="SidetoSide" type="Node3D"]
+script = ExtResource("1_w1qc8")

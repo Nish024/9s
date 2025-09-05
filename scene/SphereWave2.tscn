@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhjtu456dvrw"]
+
+[ext_resource type="Script" uid="uid://bbv1vv61t8sx4" path="res://script/sphere_wave_2.gd" id="1_0bfhh"]
+[ext_resource type="PackedScene" uid="uid://bpm7kc26hssy8" path="res://wave_spawners/continous_shooting.tscn" id="3_0bfhh"]
+[ext_resource type="PackedScene" uid="uid://pyatjjfyd44j" path="res://scene/sheild.tscn" id="4_h3ci1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpj0a"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vufel"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h08p8"]
+material = SubResource("StandardMaterial3D_vufel")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ypet"]
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vufel"]
+margin = 0.0
+radius = 0.684189
+
+[node name="Sphereenemy2" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_0bfhh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.44545, 0, 0, 0, 2.44545, 0, 0, 0, 2.44545, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_gpj0a")
+mesh = SubResource("SphereMesh_h08p8")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ypet")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_vufel")
+
+[node name="Sheild" parent="." instance=ExtResource("4_h3ci1")]
+
+[node name="Continous_shooting" parent="." instance=ExtResource("3_0bfhh")]
+fire_rate = 0.2
+spread_angle = 45.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5

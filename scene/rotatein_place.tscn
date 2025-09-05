@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxoaar3u4ret0"]
+
+[ext_resource type="Script" uid="uid://cbm8ew4jl5sys" path="res://script/rotate_in_place.gd" id="1_ilrc5"]
+
+[node name="RotateinPlace" type="Node3D"]
+script = ExtResource("1_ilrc5")

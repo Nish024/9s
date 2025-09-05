@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clgei547vgq6e"]
+
+[ext_resource type="Script" uid="uid://1vsaic3uv6xo" path="res://script/bullet_pattern_1.gd" id="1_3i4al"]
+
+[node name="shootatplayer" type="Node3D"]
+script = ExtResource("1_3i4al")

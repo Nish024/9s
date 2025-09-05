@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drdmbspf5tlg1"]
+
+[ext_resource type="Script" uid="uid://ly0htuqd7ncq" path="res://script/single_shooting.gd" id="1_8k56n"]
+
+[node name="single_shooting" type="Node3D"]
+script = ExtResource("1_8k56n")

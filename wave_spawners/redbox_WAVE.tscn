@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://6kqyihe5dve8"]
+
+[ext_resource type="PackedScene" uid="uid://daxyhms0c0qy0" path="res://scene/Redboxs.tscn" id="1_av3kq"]
+[ext_resource type="Script" uid="uid://cce478t7iy1gw" path="res://script/redbox_wave.gd" id="2_xvd6k"]
+
+[node name="invisible_barrier" groups=["Hazard"] instance=ExtResource("1_av3kq")]
+script = ExtResource("2_xvd6k")
+
+[node name="MeshInstance3D" parent="." index="0"]
+layers = 128

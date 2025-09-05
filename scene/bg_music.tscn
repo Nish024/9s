@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj6gynbk48mj4"]
+
+[ext_resource type="AudioStream" uid="uid://stwmq4fwj56e" path="res://assest/City Ruins - 8 bit.mp3" id="1_fpj07"]
+
+[node name="bg music" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_fpj07")
+volume_db = 5.0
+autoplay = true

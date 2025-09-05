@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxtvu0tyysx7q"]
+
+[ext_resource type="PackedScene" uid="uid://cvug54jm2386v" path="res://scene/plane.tscn" id="2_lnov8"]
+[ext_resource type="PackedScene" uid="uid://dp31aqynunubr" path="res://scene/invisible_barrier.tscn" id="3_kj7ci"]
+[ext_resource type="PackedScene" uid="uid://cq4vss0fn8ieq" path="res://scene/player1.tscn" id="4_yilmc"]
+[ext_resource type="PackedScene" uid="uid://ck2xy36e3mf43" path="res://scene/RoundOver.tscn" id="5_kj7ci"]
+[ext_resource type="PackedScene" uid="uid://bhjtu456dvrw" path="res://scene/SphereWave2.tscn" id="5_nluny"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_no8bm"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_itxqv"]
+sky_material = SubResource("ProceduralSkyMaterial_no8bm")
+
+[sub_resource type="Environment" id="Environment_v0l8b"]
+background_mode = 2
+sky = SubResource("Sky_itxqv")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="level2" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v0l8b")
+
+[node name="plane" parent="." instance=ExtResource("2_lnov8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 4
+collision_mask = 27
+
+[node name="BG_plane" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.269022, -1.92888, 0.676323)
+size = Vector3(95.4885, 3.08032, 73.3208)
+
+[node name="barrier" type="Node" parent="."]
+
+[node name="invisible_barrier" parent="barrier" instance=ExtResource("3_kj7ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5559, 0, 0)
+
+[node name="invisible_barrier2" parent="barrier" instance=ExtResource("3_kj7ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4209, 0, 0)
+
+[node name="invisible_barrier3" parent="barrier" instance=ExtResource("3_kj7ci")]
+transform = Transform3D(-0.00748736, 0, 0.999972, 0, 1, 0, -0.999972, 0, -0.00748736, -0.147557, 0, -13.7001)
+
+[node name="invisible_barrier4" parent="barrier" instance=ExtResource("3_kj7ci")]
+transform = Transform3D(-0.00748736, 0, 0.999972, 0, 1, 0, -0.999972, 0, -0.00748736, -0.0865755, 0.110332, 13.4671)
+
+[node name="player" parent="." instance=ExtResource("4_yilmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0480194, 0.538835, -7.68876)
+
+[node name="RoundUI" parent="." instance=ExtResource("5_kj7ci")]
+
+[node name="Sphereenemy" parent="." instance=ExtResource("5_nluny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35737, 11.3304)

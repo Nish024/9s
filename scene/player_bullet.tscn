@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://lhv512fa4ldx"]
+
+[ext_resource type="Script" uid="uid://b7dmimsk682gm" path="res://script/bullet.gd" id="1_mu66h"]
+[ext_resource type="AudioStream" uid="uid://socmrrnrreps" path="res://assest/sci-fi-blaster-199373.mp3" id="2_npmll"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xw300"]
+albedo_color = Color(0.992157, 0.984314, 0.960784, 1)
+emission_enabled = true
+emission = Color(0.424595, 0.290946, 0.12803, 1)
+emission_energy_multiplier = 15.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m2l4i"]
+material = SubResource("StandardMaterial3D_xw300")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qwydi"]
+radius = 0.365771
+height = 1.61351
+
+[node name="player_bullet" type="Area3D" groups=["player_bullet"]]
+collision_layer = 1040
+collision_mask = 2183
+script = ExtResource("1_mu66h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.632895, 0, 0, 0, -3.50462e-08, -0.62435, 0, 0.801764, -2.72912e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_m2l4i")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_qwydi")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_npmll")
+volume_db = -7.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

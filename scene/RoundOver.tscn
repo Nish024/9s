@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck2xy36e3mf43"]
+
+[ext_resource type="Script" uid="uid://pfkjea8gev5s" path="res://script/RoundUI.gd" id="1_8o0q1"]
+
+[node name="RoundUI" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_8o0q1")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 58.0
+offset_right = 973.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 80
+text = "Round Over"
+
+[node name="LEVEL 1" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 302.0
+offset_right = 525.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 35
+text = "LEVEL 1"
+
+[node name="Level 2" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 304.0
+offset_right = 878.0
+offset_bottom = 396.0
+theme_override_font_sizes/font_size = 35
+text = "Level 2
+"
+
+[node name="Level 3" type="Button" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 920.0
+offset_top = 302.0
+offset_right = 1224.0
+offset_bottom = 397.0
+theme_override_font_sizes/font_size = 35
+text = "LEVEL 3"
+
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 435.0
+offset_right = 885.0
+offset_bottom = 542.0
+theme_override_font_sizes/font_size = 35
+text = "Quit"
+
+[connection signal="pressed" from="Panel/LEVEL 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Panel/Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Panel/Level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]

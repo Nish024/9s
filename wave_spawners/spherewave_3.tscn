@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfxoucoye41fw"]
+
+[ext_resource type="PackedScene" uid="uid://pg4cf6hx2bg6" path="res://scene/Sphereenemy.tscn" id="1_rt8o0"]
+[ext_resource type="PackedScene" uid="uid://pyatjjfyd44j" path="res://scene/sheild.tscn" id="2_3ymlb"]
+[ext_resource type="Script" uid="uid://cshrwmjlw567c" path="res://script/spherewave_3.gd" id="2_l1adx"]
+[ext_resource type="PackedScene" uid="uid://drdmbspf5tlg1" path="res://scene/single_shooting.tscn" id="3_tv8qt"]
+
+[node name="Spherewave3" instance=ExtResource("1_rt8o0")]
+script = ExtResource("2_l1adx")
+
+[node name="Sheild" parent="." index="2" instance=ExtResource("2_3ymlb")]
+
+[node name="single_shooting" parent="." index="3" instance=ExtResource("3_tv8qt")]
+fire_rate = 0.1
+bullet_speed = 25.0

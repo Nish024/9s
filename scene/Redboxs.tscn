@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://daxyhms0c0qy0"]
+
+[ext_resource type="Shader" uid="uid://cwkqavdyidrwk" path="res://script/Redboxs.gdshader" id="1_hpns6"]
+[ext_resource type="Script" uid="uid://b75xakwbqk0wj" path="res://script/redboxs.gd" id="1_x7218"]
+[ext_resource type="Script" uid="uid://7ys4nwrkv6nq" path="res://script/damage_area.gd" id="3_758un"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7218"]
+render_priority = 0
+shader = ExtResource("1_hpns6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2jc28"]
+material = SubResource("ShaderMaterial_x7218")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q5h0j"]
+size = Vector3(1.00004, 1, 1.01247)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7218"]
+size = Vector3(1.00354, 1, 1.00015)
+
+[node name="red_box" type="CharacterBody3D" groups=["hazard"]]
+script = ExtResource("1_x7218")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_2jc28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0119106, 0, 0.00772879)
+shape = SubResource("BoxShape3D_q5h0j")
+
+[node name="DamageArea" type="Area3D" parent="."]
+script = ExtResource("3_758un")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" groups=["box"]]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0123596, 0, 0.00461578)
+shape = SubResource("BoxShape3D_x7218")
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

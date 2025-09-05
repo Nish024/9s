@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckjmsgcxpnfxm"]
+
+[ext_resource type="Script" uid="uid://dufqgaexjgt5f" path="res://script/triangle_bullet.gd" id="1_5c186"]
+
+[node name="triangle_bullet" type="Node3D"]
+script = ExtResource("1_5c186")

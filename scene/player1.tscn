@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq4vss0fn8ieq"]
+
+[ext_resource type="Script" uid="uid://bwfilbksw6xb3" path="res://script/player.gd" id="1_xo3ru"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjaqi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xo3ru"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_4qnqm"]
+material = SubResource("StandardMaterial3D_xo3ru")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo3ru"]
+size = Vector3(1.32703, 1, 1.6756)
+
+[node name="player1" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 1025
+collision_mask = 2061
+script = ExtResource("1_xo3ru")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.36781, 0, 0, 0, -7.4361e-08, -0.992695, 0, 1.70118, -4.33921e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hjaqi")
+mesh = SubResource("PrismMesh_4qnqm")
+
+[node name="RayCast3D" type="RayCast3D" parent="MeshInstance3D" groups=["Player"]]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 0.588, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0215454, 0, 0.0177917)
+shape = SubResource("BoxShape3D_xo3ru")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["Player"]]
+transform = Transform3D(-1, -6.18172e-08, 6.18172e-08, 2.33892e-08, 0.49215, 0.87051, -8.42359e-08, 0.87051, -0.49215, -0.0563788, 20, -4.15745)
+projection = 1
+size = 30.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

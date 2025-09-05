@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://xkdf3d4qipqm"]
+
+[ext_resource type="Script" uid="uid://c4v2lo4ljq7pk" path="res://script/main.gd" id="1_brvut"]
+[ext_resource type="PackedScene" uid="uid://cq4vss0fn8ieq" path="res://scene/player.tscn" id="1_itxqv"]
+[ext_resource type="PackedScene" uid="uid://cvug54jm2386v" path="res://scene/plane.tscn" id="2_v0l8b"]
+[ext_resource type="PackedScene" uid="uid://dp31aqynunubr" path="res://scene/invisible_barrier.tscn" id="3_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://ccppm6pkilkic" path="res://scene/player2.tscn" id="5_0ha60"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_no8bm"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_itxqv"]
+sky_material = SubResource("ProceduralSkyMaterial_no8bm")
+
+[sub_resource type="Environment" id="Environment_v0l8b"]
+background_mode = 2
+sky = SubResource("Sky_itxqv")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_brvut")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v0l8b")
+
+[node name="plane" parent="." instance=ExtResource("2_v0l8b")]
+
+[node name="barrier" type="Node" parent="."]
+
+[node name="invisible_barrier" parent="barrier" instance=ExtResource("3_wp4xf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5559, 0, 0)
+
+[node name="invisible_barrier2" parent="barrier" instance=ExtResource("3_wp4xf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4209, 0, 0)
+
+[node name="invisible_barrier3" parent="barrier" instance=ExtResource("3_wp4xf")]
+transform = Transform3D(-0.00748736, 0, 0.999972, 0, 1, 0, -0.999972, 0, -0.00748736, -0.147557, 0, -13.7001)
+
+[node name="invisible_barrier4" parent="barrier" instance=ExtResource("3_wp4xf")]
+transform = Transform3D(-0.00748736, 0, 0.999972, 0, 1, 0, -0.999972, 0, -0.00748736, -0.0865755, 0.110332, 13.4671)
+
+[node name="player" parent="." instance=ExtResource("1_itxqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3408)
+
+[node name="plane2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000116348, -1.92887, -0.290598)
+size = Vector3(50.8622, 3.08032, 44.4554)
+
+[node name="player2" parent="." instance=ExtResource("5_0ha60")]
+transform = Transform3D(-1, 0, -0.000192078, 0, 1, 0, 0.000192078, 0, -1, 0, 0, 9.34517)

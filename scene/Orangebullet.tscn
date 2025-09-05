@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b28l8t1gfjg7o"]
+
+[ext_resource type="Script" uid="uid://bxgsfyjavnn2v" path="res://script/orangebullet.gd" id="1_5lack"]
+[ext_resource type="Shader" uid="uid://b4g8l8rvelwrb" path="res://script/Orangebullet.gdshader" id="2_5lack"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1p75"]
+render_priority = 0
+shader = ExtResource("2_5lack")
+shader_parameter/flat_color = Color(1, 0.5, 0, 1)
+shader_parameter/alpha_strength = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vufel"]
+material = SubResource("ShaderMaterial_y1p75")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_urhpb"]
+radius = 0.0572956
+
+[node name="Orangebullet" type="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+collision_layer = 8
+collision_mask = 29
+script = ExtResource("1_5lack")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+layers = 8
+mesh = SubResource("SphereMesh_vufel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_urhpb")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
