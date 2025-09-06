@@ -6,7 +6,6 @@
 
 [node name="triangle" instance=ExtResource("1_npwjb")]
 script = ExtResource("2_npwjb")
-health = 30
 
 [node name="triangle_bullet" parent="." index="3" instance=ExtResource("3_npwjb")]
 fire_rate = 0.2

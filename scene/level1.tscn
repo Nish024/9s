@@ -55,11 +55,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 collision_layer = 4
 collision_mask = 27
 
-[node name="BG_plane" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.269022, -1.92888, 0.676323)
-visible = false
-size = Vector3(95.4885, 3.08032, 73.3208)
-
 [node name="player" parent="." instance=ExtResource("4_ldwqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.536337, 0.5, -15.4931)
 

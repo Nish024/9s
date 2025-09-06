@@ -1,6 +1,8 @@
 extends Node
+
 @onready var player: CharacterBody3D = $player
 
+# --- Level Data ---
 var level_states = {
 	"Level1": {"tokens_collected": 0, "completed": false, "current_wave": 0}
 }
@@ -9,6 +11,8 @@ var current_level_name = "Level1"
 var active_spawners_for_wave: Array = []
 var enemies_left_to_spawn: int = 0
 var enemies_alive: int = 0
+
+const MAX_WAVES = 5  # Last wave number
 
 # --- Public Functions ---
 func start_level(level_name: String) -> void:
@@ -21,18 +25,29 @@ func start_level(level_name: String) -> void:
 	start_next_wave()
 
 func start_next_wave() -> void:
+	# Increment wave
 	level_states[current_level_name]["current_wave"] += 1
 	var wave_token = level_states[current_level_name]["current_wave"]
+
+	# Check if all waves are done
+	if wave_token > MAX_WAVES:
+		print("All waves completed! Going to RoundOver scene...")
+		call_deferred("_go_to_round_over")
+		return
 	
 	print("Starting Wave " + str(wave_token) + " in " + current_level_name)
 	active_spawners_for_wave.clear()
-	
-	if player:
-		player.global_position = Vector3(-0.7, 0.5, -15.0)
 
+	# Move player to start position
+	if is_instance_valid(player):
+		player.global_position = Vector3(-0.7, 0.5, -15.0)
+		player.health = 100  # Reset health
+		print("DEBUG: Player health reset to 100.")
+
+	# Find all spawners for this wave
 	var all_spawners = get_tree().get_current_scene().find_children("WaveSpawner*", "", true, false)
 	var spawners_found = false
-	
+
 	for spawner in all_spawners:
 		if spawner.has_method("start_wave") and spawner.wave_token == wave_token:
 			spawners_found = true
@@ -71,23 +86,19 @@ func _on_wave_finished() -> void:
 			break
 
 	if all_spawners_are_finished:
-		# 🧹 Cleanup only wave-spawned props/enemies
+		# Cleanup only wave-spawned props/enemies
 		for node in get_tree().get_nodes_in_group("wave_temp"):
 			if is_instance_valid(node):
 				node.queue_free()
 
 		print("All spawners for this wave are finished! Starting next wave...")
-
-		# --- Reset player health to 100 ---
-		if player:
-			player.health = 100
-			print("DEBUG: Player health reset to 100.")
-
 		start_next_wave()
-
 
 func is_wave_done() -> bool:
 	return enemies_left_to_spawn <= 0 and enemies_alive <= 0
+
+func _go_to_round_over():
+	get_tree().change_scene_to_file("res://scene/RoundOver.tscn")
 
 func _ready() -> void:
 	start_level("Level1")
