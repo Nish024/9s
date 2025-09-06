@@ -6,33 +6,31 @@ extends StaticBody3D
 @onready var damage_area: Area3D = $DamageArea
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 
-@export var radius: float = 5.0
-@export var speed: float = 1.0
+@export var move_distance: float = 5.0   # how far left/right it moves
+@export var speed: float = 2.0           # movement speed
 
-var _angle: float = 0.0
-var _center: Vector3 = Vector3(9.5,0.5,-5.3)  # Hard-coded center at (0, 0, 0)
+var _start_position: Vector3
+var _direction: int = 1  # 1 = right, -1 = left
 
 func _ready() -> void:
+	_start_position = global_position
+
 	# Connect bullet collisions
 	if not damage_area.area_entered.is_connected(_on_damage_area_area_entered):
 		damage_area.area_entered.connect(_on_damage_area_area_entered)
 
-	# Connect player collisions
 	if not damage_area.body_entered.is_connected(_on_damage_area_body_entered):
 		damage_area.body_entered.connect(_on_damage_area_body_entered)
 
 func _process(delta: float) -> void:
-	_angle += speed * delta
+	# Move left and right
+	global_position.x += speed * _direction * delta
 
-	# Orbit around center (XZ plane only)
-	var new_x = _center.x + radius * cos(_angle)
-	var new_z = _center.z + radius * sin(_angle)
-	global_position = Vector3(new_x, global_position.y, new_z)
-
-	# Rotate only on Y axis to face the center (no inclination)
-	var dir = _center - global_position
-	var angle_y = atan2(dir.x, dir.z)
-	rotation = Vector3(0, angle_y, 0)
+	# Check if we've reached the boundaries
+	if global_position.x > _start_position.x + move_distance:
+		_direction = -1  # switch direction to left
+	elif global_position.x < _start_position.x - move_distance:
+		_direction = 1   # switch direction to right
 
 # Block bullets
 func _on_damage_area_area_entered(area: Area3D) -> void:

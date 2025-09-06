@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccbxtlmwr0axc"]
+
+[ext_resource type="PackedScene" uid="uid://6kqyihe5dve8" path="res://wave_spawners/redbox_WAVE.tscn" id="1_58ffs"]
+[ext_resource type="Script" uid="uid://b3cjgg4uh40sc" path="res://script/redbox_rotate_2.gd" id="2_u5b0s"]
+
+[node name="redbox_rotate" instance=ExtResource("1_58ffs")]
+script = ExtResource("2_u5b0s")
+radius = 7.0
+speed = 3.0
+_center = Vector3(-11, 0.5, -6)
+
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="body_shape_entered" from="DamageArea" to="." method="_on_damage_area_body_shape_entered"]

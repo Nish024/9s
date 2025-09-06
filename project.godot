@@ -39,6 +39,7 @@ enemy_bullet=""
 hazard=""
 box=""
 Hazard=""
+wave_temp=""
 
 [input]
 

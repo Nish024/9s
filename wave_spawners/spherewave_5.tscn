@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://bui3luegxqafq"]
+
+[ext_resource type="PackedScene" uid="uid://pg4cf6hx2bg6" path="res://scene/Sphereenemy.tscn" id="1_dwi00"]
+[ext_resource type="Script" uid="uid://gra1jbogyd2i" path="res://script/spherewave_5.gd" id="2_dwi00"]
+[ext_resource type="PackedScene" uid="uid://pyatjjfyd44j" path="res://scene/sheild.tscn" id="3_jk3rh"]
+[ext_resource type="PackedScene" uid="uid://ca14a2fler543" path="res://scene/sphere_shooting.tscn" id="4_dwi00"]
+
+[node name="Spherewave3" instance=ExtResource("1_dwi00")]
+script = ExtResource("2_dwi00")
+
+[node name="Sheild" parent="." index="2" instance=ExtResource("3_jk3rh")]
+
+[node name="sphereShooting" parent="." index="3" instance=ExtResource("4_dwi00")]

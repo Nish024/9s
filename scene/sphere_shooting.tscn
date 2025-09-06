@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca14a2fler543"]
+
+[ext_resource type="Script" uid="uid://m1n48v7jtgs" path="res://script/sphere_shooting.gd" id="1_g1ixs"]
+
+[node name="sphereShooting" type="Node3D"]
+script = ExtResource("1_g1ixs")
+fire_rate = 0.5

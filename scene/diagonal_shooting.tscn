@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vumged5nsynt"]
+
+[ext_resource type="Script" uid="uid://cb0ee75sv1up3" path="res://script/diagonal_shooting.gd" id="1_4rfqp"]
+
+[node name="diagonal_shooting" type="Node3D"]
+script = ExtResource("1_4rfqp")

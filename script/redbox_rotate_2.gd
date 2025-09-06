@@ -10,7 +10,7 @@ extends StaticBody3D
 @export var speed: float = 1.0
 
 var _angle: float = 0.0
-var _center: Vector3 = Vector3(9.5,0.5,-5.3)  # Hard-coded center at (0, 0, 0)
+@export var _center: Vector3 = Vector3(-11,0.5,-6.0) # Changed x-coordinate to a negative value
 
 func _ready() -> void:
 	# Connect bullet collisions
@@ -22,7 +22,7 @@ func _ready() -> void:
 		damage_area.body_entered.connect(_on_damage_area_body_entered)
 
 func _process(delta: float) -> void:
-	_angle += speed * delta
+	_angle -= speed * delta # This is the change
 
 	# Orbit around center (XZ plane only)
 	var new_x = _center.x + radius * cos(_angle)
