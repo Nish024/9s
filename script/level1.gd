@@ -1,4 +1,5 @@
 extends Node
+@onready var player: CharacterBody3D = $player
 
 var level_states = {
 	"Level1": {"tokens_collected": 0, "completed": false, "current_wave": 0}
@@ -26,10 +27,8 @@ func start_next_wave() -> void:
 	print("Starting Wave " + str(wave_token) + " in " + current_level_name)
 	active_spawners_for_wave.clear()
 	
-	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		player.global_position = Vector3(-0.7, 0.5, -15.0)
-		print("DEBUG: Player moved to new wave spawn point.")
 
 	var all_spawners = get_tree().get_current_scene().find_children("WaveSpawner*", "", true, false)
 	var spawners_found = false
@@ -64,21 +63,28 @@ func complete_level(level_name: String) -> void:
 # --- Private Functions ---
 func _on_wave_finished() -> void:
 	print("A wave spawner finished. Checking if all spawners for this wave are complete...")
-	
+
 	var all_spawners_are_finished = true
 	for spawner in active_spawners_for_wave:
 		if not spawner.is_wave_done():
 			all_spawners_are_finished = false
 			break
-	
+
 	if all_spawners_are_finished:
 		# 🧹 Cleanup only wave-spawned props/enemies
 		for node in get_tree().get_nodes_in_group("wave_temp"):
 			if is_instance_valid(node):
 				node.queue_free()
-		
+
 		print("All spawners for this wave are finished! Starting next wave...")
+
+		# --- Reset player health to 100 ---
+		if player:
+			player.health = 100
+			print("DEBUG: Player health reset to 100.")
+
 		start_next_wave()
+
 
 func is_wave_done() -> bool:
 	return enemies_left_to_spawn <= 0 and enemies_alive <= 0

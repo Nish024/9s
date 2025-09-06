@@ -27,9 +27,7 @@ func _spawn_enemies() -> void:
 		_spawn_single_enemy()
 
 func _spawn_single_enemy() -> void:
-	print("DEBUG: Attempting to spawn a single enemy.")
 	if not enemy_scene:
-		print("Error: enemy_scene is not set in the inspector!")
 		return
 		
 	var new_enemy: Node3D = enemy_scene.instantiate()
@@ -45,13 +43,11 @@ func _spawn_single_enemy() -> void:
 		if new_enemy.has_method("start"):
 			new_enemy.start(new_enemy)
 		enemies_alive += 1
-		print("DEBUG: Spawned new enemy. Enemies alive: ", enemies_alive)
 
 	enemies_left_to_spawn -= 1
 
 func _on_enemy_died() -> void:
 	enemies_alive -= 1
-	print(self.name, ": Enemies remaining: ", enemies_alive)
 	
 	if enemies_left_to_spawn <= 0 and enemies_alive <= 0:
 		wave_finished.emit()

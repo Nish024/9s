@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if collider.is_in_group("Hazard"):
+		if collider and collider.is_in_group("Hazard") and  collider.is_in_group("hazard"):
 			take_damage(10)
 			flash_red()
 
@@ -60,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 func take_damage(amount: int) -> void:
 	health -= amount
+	print(health)
 	flash_red()
 	if health <= 0:
 		die()

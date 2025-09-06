@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xkdf3d4qipqm"]
+[gd_scene load_steps=23 format=3 uid="uid://xkdf3d4qipqm"]
 
 [ext_resource type="Script" uid="uid://c4v2lo4ljq7pk" path="res://script/level1.gd" id="1_a215g"]
 [ext_resource type="Shader" uid="uid://cti4l61xl61ek" path="res://script/sky.gdshader" id="2_6i17f"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ccbxtlmwr0axc" path="res://wave_spawners/redbox_rotate2.tscn" id="15_wrpia"]
 [ext_resource type="PackedScene" uid="uid://cluf83ykx60ri" path="res://wave_spawners/redbox_sidetoside.tscn" id="16_58agj"]
 [ext_resource type="PackedScene" uid="uid://bui3luegxqafq" path="res://wave_spawners/spherewave_5.tscn" id="18_nlrn2"]
+[ext_resource type="PackedScene" uid="uid://degxvttf61vcy" path="res://wave_spawners/trianglewave3.tscn" id="19_ylqhq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wrpia"]
 shader = ExtResource("2_6i17f")
@@ -81,7 +82,6 @@ transform = Transform3D(-0.00745856, 0, 1.51372, 0, 1, 0, -0.996125, 0, -0.01133
 [node name="WaveSpawner1A" parent="Wave1" instance=ExtResource("6_a215g")]
 transform = Transform3D(1.13, 0, 0, 0, 1.13, 0, 0, 0, 1.13, -0.167614, 1.3, 0.924003)
 enemy_scene = ExtResource("7_ldwqa")
-wave_token = 7
 
 [node name="Wave2" type="Node" parent="."]
 
@@ -123,7 +123,7 @@ enemy_scene = ExtResource("10_e6f45")
 wave_token = 3
 
 [node name="WaveSpawner3D" parent="wave3" instance=ExtResource("6_a215g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 10.5359)
 enemy_scene = ExtResource("12_3qsor")
 wave_token = 3
 
@@ -199,6 +199,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326579, 1.3, 10.9486)
 enemy_scene = ExtResource("12_3qsor")
 wave_token = 4
 
-[node name="WaveSpawner1c" parent="." instance=ExtResource("6_a215g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+[node name="wave5" type="Node" parent="."]
+
+[node name="WaveSpawner1c" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0827, 1.3, 13.9988)
 enemy_scene = ExtResource("18_nlrn2")
+wave_token = 5
+
+[node name="WaveSpawner1d" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.083, 1.3, 9.5)
+enemy_scene = ExtResource("11_3qsor")
+wave_token = 5
+
+[node name="WaveSpawner1c2" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.894, 1.3, 13.9988)
+enemy_scene = ExtResource("18_nlrn2")
+wave_token = 5
+
+[node name="WaveSpawner1d2" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.894, 1.3, 9.5)
+enemy_scene = ExtResource("11_3qsor")
+wave_token = 5
+
+[node name="WaveSpawner1c3" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.894, 1.3, -15.7206)
+enemy_scene = ExtResource("18_nlrn2")
+wave_token = 5
+
+[node name="WaveSpawner1d3" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.894, 1.3, -10)
+enemy_scene = ExtResource("11_3qsor")
+wave_token = 5
+
+[node name="WaveSpawner1c4" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3882, 1.3, -15.7206)
+enemy_scene = ExtResource("18_nlrn2")
+wave_token = 5
+
+[node name="WaveSpawner1d4" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.388, 1.3, -10)
+enemy_scene = ExtResource("11_3qsor")
+wave_token = 5
+
+[node name="WaveSpawner2c" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3882, 1.3, -0.565967)
+enemy_scene = ExtResource("19_ylqhq")
+wave_token = 5
+
+[node name="WaveSpawner2c2" parent="wave5" instance=ExtResource("6_a215g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8043, 1.3, -0.692346)
+enemy_scene = ExtResource("19_ylqhq")
+wave_token = 5
