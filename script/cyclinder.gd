@@ -20,10 +20,14 @@ func _ready():
 		movement_component.start(mesh)  # pass enemy reference
 	if bullet_component and bullet_component.has_method("start"):
 		bullet_component.start(self, bullet_spawn) # Pass the bullet_spawn node
-
-	# Set up material if missing
-	mesh.material_override.albedo_color = base_color
-	if mesh.material_override == null:
+	if mesh.material_override:
+		# Duplicate material so it’s unique per enemy
+		mesh.material_override = mesh.material_override.duplicate()
+		var mat := mesh.material_override as StandardMaterial3D
+		if mat:
+			mat.albedo_color = base_color
+	else:
+		# Create a new material if none exists
 		var mat := StandardMaterial3D.new()
 		mat.albedo_color = base_color
 		mesh.material_override = mat

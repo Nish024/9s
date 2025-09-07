@@ -15,6 +15,18 @@ var bullet_component: Node = null
 # --- State ---
 var enemy: CharacterBody3D
 signal died
+func _ready():
+	if mesh.material_override:
+		# Duplicate material so it’s unique per enemy
+		mesh.material_override = mesh.material_override.duplicate()
+		var mat := mesh.material_override as StandardMaterial3D
+		if mat:
+			mat.albedo_color = base_color
+	else:
+		# Create a new material if none exists
+		var mat := StandardMaterial3D.new()
+		mat.albedo_color = base_color
+		mesh.material_override = mat
 # This function is called once by the enemy's main script
 # to initialize the shooting component.
 func start(enemy_ref: CharacterBody3D):
