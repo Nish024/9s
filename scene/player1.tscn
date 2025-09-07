@@ -38,4 +38,12 @@ transform = Transform3D(-1, -6.18172e-08, 6.18172e-08, 2.33892e-08, 0.49215, 0.8
 projection = 1
 size = 30.0
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -3.0
+offset_top = -1.0
+offset_right = 386.0
+offset_bottom = 71.0
+theme_override_colors/font_outline_color = Color(0.0357853, 0.483284, 0.208722, 1)
+fill_mode = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -5,6 +5,8 @@ extends CharacterBody3D
 @onready var player_ray: RayCast3D = $MeshInstance3D/RayCast3D
 @onready var bullet: PackedScene = preload("res://scene/player_bullet.tscn")
 @onready var timer: Timer = $Timer
+@onready var health_bar: ProgressBar = $HealthBar
+
 
 var default_color := Color(1, 1, 1)
 var is_holding_fire = false
@@ -20,6 +22,7 @@ func _ready():
 		default_color = mesh.material_override.albedo_color
 	else:
 		print("⚠️ Material override not set correctly.")
+	update_health_bar()
 
 func _on_health_depleted():
 	get_parent().on_player_died()
@@ -58,9 +61,14 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+func update_health_bar() -> void:
+	if health_bar:   # safety check in case it's not ready yet
+		health_bar.value = health
+	
 func take_damage(amount: int) -> void:
 	health -= amount
-	print(health)
+	health = clamp(health, 0, 100)
+	update_health_bar()   # ✅ keeps UI in sync
 	flash_red()
 	if health <= 0:
 		die()

@@ -11,7 +11,6 @@ var current_level_name = "Level1"
 var active_spawners_for_wave: Array = []
 var enemies_left_to_spawn: int = 0
 var enemies_alive: int = 0
-
 const MAX_WAVES = 5  # Last wave number
 
 # --- Public Functions ---
@@ -42,6 +41,7 @@ func start_next_wave() -> void:
 	if is_instance_valid(player):
 		player.global_position = Vector3(-0.7, 0.5, -15.0)
 		player.health = 100  # Reset health
+		player.update_health_bar() 
 		print("DEBUG: Player health reset to 100.")
 
 	# Find all spawners for this wave

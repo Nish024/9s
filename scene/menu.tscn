@@ -15,33 +15,33 @@ script = ExtResource("1_e5g8k")
 
 [node name="start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 797.0
-offset_top = 303.0
-offset_right = 1087.0
-offset_bottom = 401.0
+offset_left = 752.0
+offset_top = 367.0
+offset_right = 1127.0
+offset_bottom = 540.0
 theme_override_fonts/font = ExtResource("2_bo06a")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "START
 "
 
 [node name="quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 797.0
-offset_top = 482.0
-offset_right = 1087.0
-offset_bottom = 572.0
+offset_left = 752.0
+offset_top = 590.0
+offset_right = 1127.0
+offset_bottom = 752.0
 theme_override_fonts/font = ExtResource("2_bo06a")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 50
 text = "QUIT"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 865.0
-offset_top = 118.0
-offset_right = 1016.0
-offset_bottom = 252.0
+offset_left = 776.0
+offset_top = 39.0
+offset_right = 1079.0
+offset_bottom = 291.0
 theme_override_fonts/font = ExtResource("3_15se8")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 200
 text = "9s"
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]

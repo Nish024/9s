@@ -13,8 +13,6 @@ var bullet_component: Node = null
 var enemy: CharacterBody3D
 signal died
 
-# Remove the _ready() function entirely to prevent premature initialization.
-
 # Add a start function that will be called by the WaveSpawner.
 func start(_enemy_ref: CharacterBody3D) -> void:
 	movement_component = $SidetoSide
@@ -34,7 +32,6 @@ func start(_enemy_ref: CharacterBody3D) -> void:
 		mesh.material_override = mat
 
 func take_damage(amount: int) -> void:
-
 	health -= amount
 	print(health)
 	flash_damage()
